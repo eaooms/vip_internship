@@ -12,6 +12,7 @@ call_small_variants () {
     args+=("--reads" "!{cram}")
     args+=("--output_vcf" "!{vcfOut}")
     args+=("--num_shards" "!{task.cpus}")
+    args+=("--use_hp_information")
     args+=("--regions" "!{bed}")
     args+=("--intermediate_results_dir" "intermediate_results")
     args+=("--sample_name" "!{sampleName}")
