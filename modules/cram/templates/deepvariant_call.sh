@@ -12,11 +12,11 @@ call_small_variants () {
     args+=("--reads" "!{cram}")
     args+=("--output_vcf" "!{vcfOut}")
     args+=("--num_shards" "!{task.cpus}")
-    args+=("--use_hp_information")
     args+=("--regions" "!{bed}")
     args+=("--intermediate_results_dir" "intermediate_results")
     args+=("--sample_name" "!{sampleName}")
     args+=("--make_examples_extra_args=include_med_dp=true")
+    args+=("--use_hp_information")
 
     mkdir tmp
     TMPDIR=tmp ${CMD_DEEPVARIANT} "${args[@]}"
