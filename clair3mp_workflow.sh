@@ -98,7 +98,7 @@ execute_workflow(){
   local -r bedFile="${6}"
 
 
-  $WORK_DIR/nextflow clair3mp_workflow.nf -c nextflow.config -profile $paramProfile --ont $paramNanopore --fastq1 $paramIllumina_r1 --fastq2 $paramIllumina_r2 --output $paramOutput --nanopore_id $ID_ont --ilmn_id $ID_illumina --bed_file $bedFile
+  $WORK_DIR/nextflow-23.10.0-all clair3mp_workflow.nf -c nextflow.config -profile $paramProfile --ont $paramNanopore --fastq1 $paramIllumina_r1 --fastq2 $paramIllumina_r2 --output $paramOutput --nanopore_id $ID_ont --ilmn_id $ID_illumina --bed_file $bedFile
 }
 
 main() {

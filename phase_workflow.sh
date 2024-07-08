@@ -68,7 +68,7 @@ execute_workflow(){
   local -r paramOutput="$(realpath "${3}")"
   local -r paramProfile="${4}"
 
-  $WORK_DIR/nextflow PhasingPipe.nf -c nextflow.config -profile $paramProfile --nanopore $paramNanopore --illumina $paramIllumina --output $paramOutput
+  $WORK_DIR/nextflow-23.10.0-all PhasingPipe.nf -c nextflow.config -profile $paramProfile --nanopore $paramNanopore --illumina $paramIllumina --output $paramOutput
 }
 
 main() {
