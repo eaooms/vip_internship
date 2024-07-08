@@ -17,7 +17,7 @@ process BCF_ISEC{
     mkdir -p "$baseDir/${params.output}"
     fi
     cd $baseDir
-    apptainer exec $baseDir/vip_phase/images/bcftools-1.17.sif /usr/local/bin/bcftools isec -p $params.output $params.vcf_1 $params.vcf_2
+    apptainer exec $baseDir/images/bcftools-1.17.sif /usr/local/bin/bcftools isec -p $params.output $params.vcf_1 $params.vcf_2
     """
 }
 
@@ -31,7 +31,7 @@ process BGZIP{
     script:
     """
     cd $baseDir
-    apptainer exec $baseDir/images/tabix.sif /opt/samtools/bin/bgzip $params.output/*
+    ls $params.output/*.vcf | xargs -n1 apptainer exec $baseDir/images/tabix.sif /opt/samtools/bin/bgzip
     """
 }
 
@@ -45,7 +45,7 @@ process BCF_INDEX{
     script:
     """
     cd $baseDir
-    apptainer exec $baseDir/vip_phase/images/bcftools-1.17.sif /usr/local/bin/bcftools index $params.output/*
+    ls $params.output/*.vcf.gz | xargs -n1 apptainer exec $baseDir/images/bcftools-1.17.sif /usr/local/bin/bcftools index
     """
 }
 
