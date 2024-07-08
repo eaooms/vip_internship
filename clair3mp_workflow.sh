@@ -1,9 +1,11 @@
 #!/bin/bash
 
+# Get the directory of the current script
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
+# Get the name of the current script
 SCRIPT_NAME="$(basename "$0")"
 
-# SCRIPT_DIR is incorrect when vip.sh is submitted as a Slurm job that is submitted as part of another Slurm job
+# Set the working directory to the script directory if not specified
 WORK_DIR="${WORK_DIR:-"${SCRIPT_DIR}"}"
 
 usage() {
@@ -15,6 +17,7 @@ usage() {
   -o, --output           <arg>  output folder"
 }
 
+# Function to validate the input parameters
 validate() {
   local -r nanopore="${1}"
   local -r illumina_r1="${2}"
@@ -22,7 +25,6 @@ validate() {
   local -r output="${4}"
   local -r bed_file="${5}"
 
-  
   if [[ -z "${nanopore}" ]]; then
     >&2 echo -e "error: missing required -n / --input"
     usage
@@ -69,7 +71,7 @@ validate() {
     exit 2
   fi
 
-  # detect java, try to load module with name 'java' or 'Java' otherwise
+  # Check if Java is installed, and if not, try to load a module for Java
   if ! command -v java &> /dev/null; then
     if command -v module &> /dev/null; then
       if module is_avail java; then
@@ -87,6 +89,7 @@ validate() {
   fi
 }
 
+# Execute the Nextflow workflow with the provided parameters
 execute_workflow(){
   local -r paramNanopore="$(realpath "${1}")"
   local -r paramIllumina_r1="$(realpath "${2}")"
@@ -97,10 +100,10 @@ execute_workflow(){
   local -r paramProfile="${5}"
   local -r bedFile="${6}"
 
-
   $WORK_DIR/nextflow-23.10.0-all clair3mp_workflow.nf -c nextflow.config -profile $paramProfile --ont $paramNanopore --fastq1 $paramIllumina_r1 --fastq2 $paramIllumina_r2 --output $paramOutput --nanopore_id $ID_ont --ilmn_id $ID_illumina --bed_file $bedFile
 }
 
+# Main function to parse arguments and run the script
 main() {
   local nanopore=""
   local illumina_r1=""
@@ -108,11 +111,15 @@ main() {
   local bed_file=""
   local output=""
   local profile=""
+
+  # Detect if Slurm is available and set profile accordingly
   if command -v sbatch &> /dev/null; then
     profile="slurm"
   else
     profile="local"
   fi
+
+  # Parse the command-line arguments
   local args=$(getopt -o n:i:l:b:o: --long nanopore:,illumina_r1:,illumina_r2:,bed_file:,output:,help: -- "$@")
   eval set -- "${args}"
 
@@ -142,13 +149,16 @@ main() {
     esac
   done
 
-  validate "${nanopore}" "${illumina_r1}" "${illumina_r2}" "${output}" "${bed_file}" 
+  # Validate the provided input parameters
+  validate "${nanopore}" "${illumina_r1}" "${illumina_r2}" "${output}" "${bed_file}"
 
+  # Create the output directory if it doesn't exist
   if ! [[ -d "${output}" ]]; then
     mkdir -p "${output}"
   fi
 
-  execute_workflow "${nanopore}" "${illumina_r1}" "${illumina_r2}" "${output}" "${profile}" "${bed_file}" 
+  # Execute the workflow with the provided parameters
+  execute_workflow "${nanopore}" "${illumina_r1}" "${illumina_r2}" "${output}" "${profile}" "${bed_file}"
 }
 
 main "${@}"
