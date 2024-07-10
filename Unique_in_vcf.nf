@@ -2,7 +2,6 @@
 
 nextflow.enable.dsl=2
 
-//Minimap_BWA
 params.vcf_1 = ''
 params.vcf_2 = ''
 params.output = ''
