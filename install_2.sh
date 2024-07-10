@@ -28,7 +28,7 @@ datasets=(
   "https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG003_NA24149_father/NISTv4.2.1/GRCh38/HG003_GRCh38_1_22_v4.2.1_benchmark_noinconsistent.bed"
 )
 
-# Function to pull Docker images using Apptainer
+# Function to build Docker images using Apptainer
 pull_docker_images() {
   for image in "${images[@]}"; do
   # Replace '/' and ':' with '_' to create a valid filename
