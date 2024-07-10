@@ -30,7 +30,7 @@ process BGZIP{
     script:
     """
     cd $baseDir
-    ls $params.output/*.vcf | xargs -n1 apptainer exec $baseDir/images/tabix.sif /opt/samtools/bin/bgzip
+    ls $params.output/*.vcf | xargs -n1 apptainer exec $baseDir/images/mgibio_tabix_1.3.1.sif /opt/samtools/bin/bgzip
     """
 }
 
