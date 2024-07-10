@@ -20,7 +20,7 @@ process BWA{
     mkdir -p "$baseDir/${params.output}"
     fi
     cd $baseDir
-    $baseDir/images/bwa/bwa mem -M -t 8 $params.reference $params.fastq1 $params.fastq2| apptainer exec $baseDir/images/samtools-1.17-patch1.sif /usr/local/bin/samtools view -bh -o $params.output/Ilmn_unsorted.bam
+    apptainer exec $baseDir/images/biocontainers_bwa_v0.7.17_cv1.sif bwa mem -M -t 8 $params.reference $params.fastq1 $params.fastq2| apptainer exec $baseDir/images/samtools-1.17-patch1.sif /usr/local/bin/samtools view -bh -o $params.output/Ilmn_unsorted.bam
     """
 }
 
