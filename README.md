@@ -28,7 +28,7 @@ git clone https://github.com/molgenis/vip
 bash vip/install.sh
 ```
 
-### Usage
+### Usage of VIP
 ```bash
 usage: vip -w <arg> -i <arg> -o <arg>
   -w, --workflow <arg>  workflow to execute. allowed values: cram, fastq, gvcf, vcf
@@ -40,6 +40,24 @@ usage: vip -w <arg> -i <arg> -o <arg>
   -s, --stub            quickly prototype workflow logic using process script stubs
   -h, --help            print this message and exit
 ```
+
+### Proof of concept Clair3-MP tool and phasing data
+
+### How to install VIP and test this branch
+# Clone repository 
+git clone https://github.com/eaooms/vip_internship.git
+cd vip_internship
+
+# Install to download tools and resources
+bash install.sh
+bash install_2.sh
+
+# Test the Clair3-MP workflow
+
+# Test the Phase workflow
+
+## Reproduce with public data
+
 
 ## Developers
 To create the documentation pages:
