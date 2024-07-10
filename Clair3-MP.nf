@@ -22,7 +22,7 @@ process CLAIR{
     mkdir -p "$baseDir/${params.output}"
     fi
     cd $baseDir
-    apptainer exec --bind /groups $baseDir/images/clair3mp.sif /opt/bin/run_clair3_mp.sh\
+    apptainer exec --bind /groups $baseDir/images/hkubal_clair3-mp.sif /opt/bin/run_clair3_mp.sh\
     --bam_fn_c=$params.ont\
     --bam_fn_p1=$params.ilmn\
     --bam_fn_c_platform=ont\
