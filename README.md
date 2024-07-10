@@ -41,22 +41,22 @@ usage: vip -w <arg> -i <arg> -o <arg>
   -h, --help            print this message and exit
 ```
 
-### Proof of concept Clair3-MP tool and phasing data
+# Proof of concept Clair3-MP tool and phasing data
 
-### How to install VIP and test this branch
-# Clone repository 
+## How to install VIP and test this branch
+### Clone repository 
 git clone https://github.com/eaooms/vip_internship.git
 cd vip_internship
 
-# Install to download tools and resources
+### Install to download tools and resources
 bash install.sh
 bash install_2.sh
 
-# Test the Clair3-MP workflow
+### Test the Clair3-MP workflow
 
-# Test the Phase workflow
+### Test the Phase workflow
 
-## Reproduce with public data
+### Reproduce with public data
 
 
 ## Developers
