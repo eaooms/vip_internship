@@ -4,7 +4,6 @@ nextflow.enable.dsl=2
 
 params.reference = "$baseDir/resources/GRCh38/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna"
 
-//Minimap_BWA
 params.ont = ''
 params.fastq1 = ''
 params.fastq2 = ''
