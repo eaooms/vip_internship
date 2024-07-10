@@ -45,12 +45,16 @@ usage: vip -w <arg> -i <arg> -o <arg>
 
 ## How to install VIP and test this branch
 ### Clone repository 
+```bash
 git clone https://github.com/eaooms/vip_internship.git
 cd vip_internship
+```
 
 ### Install to download tools and resources
+```bash
 bash install.sh
 bash install_2.sh
+```
 
 ### Test the Clair3-MP workflow
 
