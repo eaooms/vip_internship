@@ -15,7 +15,7 @@ process RUN_CLAIR{
 
     script:
     """
-    apptainer exec $baseDir/images/clairLatest.sif /opt/bin/run_clair3.sh \
+    apptainer exec $baseDir/images/hkubal_clair3_latest.sif /opt/bin/run_clair3.sh \
     --bam_fn=$params.ilmn \
     --ref_fn=$params.reference \
     --model_path /opt/models/ilmn \
@@ -47,7 +47,7 @@ process BGZIP{
 
     script:
     """
-    apptainer exec $baseDir/images/tabix.sif /opt/samtools/bin/bgzip $params.output/phased_short_with_long.vcf
+    apptainer exec $baseDir/images/mgibio_tabix_1.3.1.sif /opt/samtools/bin/bgzip $params.output/phased_short_with_long.vcf
     """
 }
 
@@ -60,7 +60,7 @@ process TABIX{
 
     script:
     """
-    apptainer exec $baseDir/images/tabix.sif /opt/samtools/bin/tabix $params.output/phased_short_with_long.vcf.gz
+    apptainer exec $baseDir/images/mgibio_tabix_1.3.1.sif /opt/samtools/bin/tabix $params.output/phased_short_with_long.vcf.gz
     """
 }
 
