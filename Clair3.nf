@@ -3,8 +3,6 @@
 nextflow.enable.dsl=2
 
 params.reference = "$baseDir/resources/GRCh38/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna"
-
-//Minimap_BWA
 params.ont = ''
 params.ilmn = ''
 params.output = ''
@@ -19,7 +17,7 @@ process RUN_CLAIR_ONT{
     mkdir -p "$baseDir/${params.output}"
     fi
     cd $baseDir
-    apptainer exec $baseDir/images/clairLatest.sif /opt/bin/run_clair3.sh \
+    apptainer exec $baseDir/images/hkubal_clair3_latest.sif /opt/bin/run_clair3.sh \
     --bam_fn=$params.ont \
     --ref_fn=$params.reference \
     --model_path /opt/models/r941_prom_sup_g5014 \
@@ -39,7 +37,7 @@ process RUN_CLAIR_ILMN{
     script:
     """
     cd $baseDir
-    apptainer exec $baseDir/images/clairLatest.sif /opt/bin/run_clair3.sh \
+    apptainer exec $baseDir/images/hkubal_clair3_latest.sif /opt/bin/run_clair3.sh \
     --bam_fn=$params.ilmn \
     --ref_fn=$params.reference \
     --model_path /opt/models/ilmn \
