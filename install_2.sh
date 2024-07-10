@@ -11,7 +11,7 @@ mkdir "$script_dir/resources/HG003"
 
 export APPTAINER_CACHEDIR="$script_dir/images/apptainer_cache"
 
-# List of Docker images to pull
+# List of Docker images to build
 images=(
   "hkubal/clair3:latest"
   "hkubal/clair3-mp"
