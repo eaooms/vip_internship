@@ -3,7 +3,6 @@
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
 SCRIPT_NAME="$(basename "$0")"
 
-# SCRIPT_DIR is incorrect when vip.sh is submitted as a Slurm job that is submitted as part of another Slurm job
 WORK_DIR="${WORK_DIR:-"${SCRIPT_DIR}"}"
 
 usage() {
