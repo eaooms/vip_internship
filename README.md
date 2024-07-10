@@ -57,11 +57,47 @@ bash install_2.sh
 ```
 
 ### Test the Clair3-MP workflow
+```bash
+usage: clair3mp_workflow.sh [-n <arg> -i <arg> -l <arg> -o <arg>]
+  -n, --nanopore             <arg>  path to nanopore file
+  -i, --illumina_r1            <arg>  path to fastq_r1 file
+  -l, --illumina_r2            <arg>  path to fastq_r2 file
+  -b, --bed_file            <arg>  path to BED file
+  -o, --output           <arg>  output folder
+```
 
 ### Test the Phase workflow
+```bash
+usage: phase_workflow.sh [-n <arg> -i <arg> -o <arg>]
+  -n, --nanopore             <arg>  path to nanopore bam file
+  -i, --illumina           <arg>  path to illumina bam file
+  -o, --output           <arg>  output folder
+```
 
 ### Reproduce with public data
+These scripts can be used to reproduce results from the internship.
+Data that wants to be used needs to be in the vip_internship directory
 
+Clair3-MP command
+```bash
+./nextflow-23.10.0-all Clair3-MP.nf --ont "Sorted and indexed Nanopore file" --ilmn "Illumina Bam file" --ouput "name for output map"
+```
+Clair3 for both Illumina and Nanopore file command
+```bash
+./nextflow-23.10.0-all Clair3.nf --ont "Sorted and indexed Nanopore file" --ilmn "Illumina Bam file" --ouput "name for output map"
+```
+Fastq to BAM for both Illumina and Nanopore files command
+```bash
+./nextflow-23.10.0-all fastq_to_bam.nf --ont "Nanopore fastq file" --fastq1 "Illumina fastq R1 file" --fastq2 "Illumina fastq R2 file" --ouput "name for output map"
+```
+Haplotype comparison tool command
+```bash
+./nextflow-23.10.0-all Happy.nf --vcf "VCF file" --ouput "name for output map"
+```
+Get all unique variants between VCF's command
+```bash
+./nextflow-23.10.0-all Unique_in_vcf.nf --vcf_1 "First VCF file" --vcf_2 "Second VCF file" --ouput "name for output map"
+```
 
 ## Developers
 To create the documentation pages:
